@@ -53,3 +53,14 @@ $(document).ready(function(){
         });
     });
 });
+
+// debe elegir al menos dos opciones del checkbox
+$(document).ready(function(){
+    $("form").submit(function(){
+        var checkedCount = $("input[name='metodo[]']:checked").length;
+        if (checkedCount < 2) {
+            alert("Por favor, elija al menos dos opciones, por las cuales se entero");
+            return false;
+        }
+    });
+});

@@ -8,26 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="validaciones.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            $("select[name='region']").change(function(){
-                var regionId = $(this).val();
-                $.ajax({
-                    url: 'get_comunas.php', // Ruta a tu script PHP que obtiene comunas
-                    type: 'GET',
-                    data: { region_id: regionId },
-                    success: function(response) {
-                        $("select[name='comuna']").html(response);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            });
-        });
-    </script>
-    
-
 </head>
 <body>
     <h1>FORMULARIO DE VOTACION</h1>

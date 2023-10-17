@@ -7,6 +7,25 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="validaciones.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("select[name='region']").change(function(){
+                var regionId = $(this).val();
+                $.ajax({
+                    url: 'get_comunas.php', // Ruta a tu script PHP que obtiene comunas
+                    type: 'GET',
+                    data: { region_id: regionId },
+                    success: function(response) {
+                        $("select[name='comuna']").html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
     
 
 </head>
@@ -22,36 +41,27 @@
 
         Email: <input type="text" id = "email" name="email"><br><br>
 
-        region :<select name="region">
+        <label for="region">Región:</label>
+    <select name="region">
+    <option value="">Seleccione una región</option>
         <?php
-        include("conexion.php");
-        $getregion = "SELECT * FROM region ORDER BY ID";
-        $getregion1 = mysqli_query($conexion, $getregion);
+            include("conexion.php");
+            $getregion = "SELECT * FROM region ORDER BY ID";
+            $getregion1 = mysqli_query($conexion, $getregion);
 
-        while($row = mysqli_fetch_array($getregion1)){
-            $id = $row ['ID'];
-            $nombre_region = $row['nombre'];
-            ?>
-            <option value="<?php echo  $nombre_region ?>"><?php echo  $nombre_region ?></option>
-            
-            <?php
-        }?>
-        </select><br><br>
-
-        comuna :<select name="comuna">
+            while($row = mysqli_fetch_array($getregion1)){
+                $id = $row ['ID'];
+                $nombre_region = $row['nombre'];
+        ?>
+        <option value="<?php echo  $id ?>"><?php echo  $nombre_region ?></option>
         <?php
-        include("conexion.php");
-        $getcomuna = "SELECT * FROM comuna ORDER BY ID";
-        $getcomuna1 = mysqli_query($conexion, $getcomuna);
+            }
+        ?>
+    </select><br><br>
 
-        while($row = mysqli_fetch_array($getcomuna1)){
-            $id = $row ['ID'];
-            $nombre_comuna = $row['nombre'];
-            ?>
-            <option value="<?php echo  $nombre_comuna?>"><?php echo $nombre_comuna?></option>
-            <?php
-        }?>
-        </select><br><br>
+    <label for="comuna">Comuna:</label>
+    <select name="comuna"></select><br><br>
+
 
         candidato :<select name="candidato">
 

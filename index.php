@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="validaciones.js"></script>
+    
+
 </head>
 <body>
     <h1>FORMULARIO DE VOTACION</h1>
 
     <form method="post">
-        Nombre y Apellido: <input type="text" name="nombre_apellido" required ><br><br>
+        Nombre y Apellido: <input type="text" id="nombre_apellido" name="nombre_apellido"><br><br>
 
-        Alias: <input type="text" name="alias"><br><br>
+        Alias: <input type="text" id = "alias" name="alias"><br><br>
 
-        Rut: <input type="text" name="rut"><br><br>
+        Rut: <input type="text" id = "rut" name="rut"><br><br>
 
-        Email: <input type="text" name="email"><br><br>
+        Email: <input type="text" id = "email" name="email"><br><br>
 
         region :<select name="region">
         <?php

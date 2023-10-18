@@ -12,7 +12,7 @@
 <body>
     <h1>FORMULARIO DE VOTACION</h1>
 
-    <form method="post">
+    <form method="post" onsubmit="return validarFormulario()">
         Nombre y Apellido: <input type="text" id="nombre_apellido" name="nombre_apellido"><br><br>
 
         Alias: <input type="text" id = "alias" name="alias"><br><br>
@@ -77,10 +77,59 @@
         <input type="submit" name = "guardar" value="votar">
     </form>
 
+    <script>
+    function validarRut(rut) {
+        if (typeof rut !== 'string') {
+            return false;
+        }
+
+        var regex = /^[0-9]+-[0-9kK]{1}$/;
+        if (!regex.test(rut)) {
+            return false;
+        }
+
+        var parts = rut.split('-');
+        var dv = parts[1];
+        var rutBody = parts[0];
+
+        var suma = 0;
+        var multiplo = 2;
+
+        for (var i = rutBody.length - 1; i >= 0; i--) {
+            suma += parseInt(rutBody.charAt(i)) * multiplo;
+            multiplo = multiplo % 7 === 0 ? 2 : multiplo + 1;
+        }
+
+        var resto = suma % 11;
+        var dvEsperado = 11 - resto;
+        if (dvEsperado === 11) {
+            dvEsperado = '0';
+        } else if (dvEsperado === 10) {
+            dvEsperado = 'K';
+        }
+
+        return dv.toString().toUpperCase() === dvEsperado.toString().toUpperCase();
+    }
+
+    function validarFormulario() {
+        var rutInput = document.getElementById('rut').value;
+        if (validarRut(rutInput)) {
+            return true; // Permite enviar el formulario si el RUT es válido
+        } else {
+            alert('RUT inválido. Por favor, ingrese un RUT válido en el formato 12345678-9.');
+            return false; // Evita que el formulario se envíe si el RUT es inválido
+        }
+    }
+</script>
+
+
+
     <?php
     
         include("registrar.php");
     ?>
+
+
 
 
 </body>

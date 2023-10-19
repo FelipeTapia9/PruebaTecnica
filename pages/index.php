@@ -6,7 +6,7 @@
     <title>Document</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="validaciones.js"></script>
+    <script src="../js/validaciones.js"></script>
 
 </head>
 <body>
@@ -25,7 +25,7 @@
     <select name="region">
     <option value="">Seleccione una región</option>
         <?php
-            include("conexion.php");
+            include("../config/conexion.php");
             $getregion = "SELECT * FROM region ORDER BY ID";
             $getregion1 = mysqli_query($conexion, $getregion);
 
@@ -44,9 +44,10 @@
 
 
         candidato :<select name="candidato">
+        <option value="">Seleccione un candidato</option>
 
         <?php
-        include("conexion.php");
+        include("../config/conexion.php");
         $getcandidato = "SELECT * FROM candidato ORDER BY ID";
         $getcandidato1 = mysqli_query($conexion, $getcandidato);
 
@@ -62,7 +63,7 @@
         como se entero :
 
         <?php
-        include("conexion.php");
+        include("../config/conexion.php");
         $getComoSeEntero = "SELECT * FROM como_se_entero ORDER BY ID";
         $getComoSeEntero1 = mysqli_query($conexion, $getComoSeEntero);
 

@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("../config/conexion.php");
 
 if (isset($_GET['region_id'])) {
     $regionId = $_GET['region_id'];

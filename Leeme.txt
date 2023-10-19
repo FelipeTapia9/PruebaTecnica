@@ -5,7 +5,7 @@
 - Crear base de datos prueba_tecnica
 - Ejecutar script 
 - Acceder al proyecto http://localhost/Prueba_Tecnica/pages/
--(Formato del rut sin puntos y con guion)
+-Formato del rut sin puntos y con guion (12345678-9)
 
 
 

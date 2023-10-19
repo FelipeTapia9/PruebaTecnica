@@ -1,0 +1,14 @@
+- Descargar XAMPP Control Panel Version 3.3.0.
+- ubicar proyecto en la carpeta htdocs
+- Start---> apache y mysql
+- Acceder por navegador http://localhost/phpmyadmin/
+- Crear base de datos prueba_tecnica
+- Ejecutar script 
+- Acceder al proyecto http://localhost/Prueba_Tecnica/pages/
+-(Formato del rut sin puntos y con guion)
+
+
+
+
+-Visual studio code -- extension php DEVSENSE.phptools-vscode
+PHP Version 8.2.4 (XAMPP)

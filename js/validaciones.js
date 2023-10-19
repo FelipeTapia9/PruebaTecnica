@@ -22,6 +22,48 @@ $(document).ready(function(){
 });
 
 //validacion de rut
+function validarRut(rut) {
+    if (typeof rut !== 'string') {
+        return false;
+    }
+
+    var regex = /^[0-9]+-[0-9kK]{1}$/;
+    if (!regex.test(rut)) {
+        return false;
+    }
+
+    var parts = rut.split('-');
+    var dv = parts[1];
+    var rutBody = parts[0];
+
+    var suma = 0;
+    var multiplo = 2;
+
+    for (var i = rutBody.length - 1; i >= 0; i--) {
+        suma += parseInt(rutBody.charAt(i)) * multiplo;
+        multiplo = multiplo % 7 === 0 ? 2 : multiplo + 1;
+    }
+
+    var resto = suma % 11;
+    var dvEsperado = 11 - resto;
+    if (dvEsperado === 11) {
+        dvEsperado = '0';
+    } else if (dvEsperado === 10) {
+        dvEsperado = 'K';
+    }
+
+    return dv.toString().toUpperCase() === dvEsperado.toString().toUpperCase();
+}
+
+function validarFormulario() {
+    var rutInput = document.getElementById('rut').value;
+    if (validarRut(rutInput)) {
+        return true; // Permite enviar el formulario si el RUT es válido
+    } else {
+        alert('RUT inválido. Por favor, ingrese un RUT válido');
+        return false; // Evita que el formulario se envíe si el RUT es inválido
+    }
+}
 
 //validacion de correo
 $(document).ready(function(){

@@ -1,5 +1,6 @@
 - Descargar XAMPP Control Panel Version 3.3.0.(xampp-windows-x64-8.2.4-0-VS16-installer)
 - ubicar proyecto en la carpeta htdocs
+- Abrir XAMPP
 - Start---> apache y mysql
 - Acceder por navegador http://localhost/phpmyadmin/
 - Crear base de datos prueba_tecnica

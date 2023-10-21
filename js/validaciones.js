@@ -15,7 +15,7 @@ $(document).ready(function(){
         var alias = $("#alias").val();
         var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$/;
         if (!regex.test(alias)) {
-            alert("El alias debe contener al menos 5 caracteres, incluyendo letras y números");
+            alert("El alias debe ser sin espacios, contener al menos 5 caracteres, incluyendo letras y números");
             return false;
         }
     });
